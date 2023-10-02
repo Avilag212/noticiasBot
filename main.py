@@ -90,7 +90,7 @@ def sendNoticia(mensagem):
             arquivo.close()
 
 # ------- MAIN ----------
-if _name_ == "_main_":
+if __name__ == "__main__":
 
     log = getNoticiasLog() #Verifica se o log de noticias existe
     if(log):
@@ -100,7 +100,7 @@ if _name_ == "_main_":
         
         if(noticiaNova):
             conteudos = getUltimaNoticiaContent()
-            mensagem = f"{conteudos['tituloNoticia']}\n_{conteudos['subtituloNoticia']}_\n\n{conteudos['link']}"
+            mensagem = f"*{conteudos['tituloNoticia']}*\n_{conteudos['subtituloNoticia']}_\n\n{conteudos['link']}"
             sendNoticia(mensagem)
             print(mensagem)
     
