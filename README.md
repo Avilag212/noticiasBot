@@ -17,3 +17,4 @@ Como usar o noticiasBot:
 
 [ATENÇÃO] ao diretório em que o BOT será executado, ele lê, cria e modifica arquivos (noticias.log.txt) <-log para verificar qual a última noticia e compararar com o último titulo disponível na home do G1.
 
+[ATENÇÃO 2]: O git aparentemente removeu 1 anderline de cada lado da linha 91 em: __name__ e __main__ e também parece ter removido os asteríscos usados na main para formatar o texto antes de passar como parametro para a função sendNoticia(). Isto parece ocorrer quando utilizo o gitclone, vou estudar melhor o porque disto.
