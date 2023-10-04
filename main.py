@@ -48,7 +48,7 @@ def sendNoticia(noticia):
     try:
         requests.get(url)
         with open('noticias.log.txt','w') as arquivo:
-            arquivo.write(f"{noticia['titulo']\}n")
+            arquivo.write(f"{noticia['titulo']}\n")
             arquivo.close()
     except:
         with open('noticiasBot.log.txt','w') as arquivo:
