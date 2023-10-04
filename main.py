@@ -60,4 +60,6 @@ if (__name__ == "__main__"):
     ultimaNoticia = getNoticia()
     ultimaNoticiaLog = getNoticiasLog()
     flag = getUltimaNoticia(ultimaNoticiaLog,ultimaNoticia['titulo'])
-    sendNoticia(ultimaNoticia)
+    
+    if(flag):
+        sendNoticia(ultimaNoticia)
