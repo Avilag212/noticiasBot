@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import requests                 #pip install requests
 from bs4 import BeautifulSoup   #pip install bs4
 import os
