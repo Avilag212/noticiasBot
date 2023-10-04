@@ -11,7 +11,7 @@ def getNoticiasLog():
             arquivo.write('Arquivo Criado\n')
             arquivo.close()
     
-    with open('noticias.log.txt','r+') as arquivo:
+    with open('noticias.log.txt','r') as arquivo:
         ultimaLinha = arquivo.readlines()[-1]
         arquivo.close()
         return ultimaLinha
@@ -47,11 +47,11 @@ def sendNoticia(noticia):
 
     try:
         requests.get(url)
-        with open('noticias.log.txt','r+') as arquivo:
-            arquivo.write(noticia['titulo'])
+        with open('noticias.log.txt','w') as arquivo:
+            arquivo.write(f"noticia['titulo']\n")
             arquivo.close()
     except:
-        with open('noticiasBot.log.txt','r+') as arquivo:
+        with open('noticiasBot.log.txt','w') as arquivo:
             arquivo.write("Erro ao enviar Notícia.")
             arquivo.close
 
