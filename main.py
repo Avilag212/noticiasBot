@@ -31,9 +31,9 @@ def getNoticia():
 
 def getUltimaNoticia(ultimaNoticiaLog, ultimaNoticia):
     if (ultimaNoticiaLog == ultimaNoticia):
-        return True
-    else:
         return False
+    else:
+        return True
     
 def sendNoticia(noticia):
     PHONE_NUMBER = '' #Set your WhatsApp number / Coloque o seu número de WhatsApp aqui
