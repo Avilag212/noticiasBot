@@ -49,7 +49,7 @@ def sendNoticia(noticia):
     try:
         requests.get(url)
         with open('noticias.log.txt','w') as arquivo:
-            arquivo.write(f"{noticia['titulo']}\n")
+            arquivo.write(f"{noticia['titulo']}")
             arquivo.close()
     except:
         with open('noticiasBot.log.txt','w') as arquivo:
@@ -61,6 +61,6 @@ if (__name__ == "__main__"):
     ultimaNoticia = getNoticia()
     ultimaNoticiaLog = getNoticiasLog()
     flag = getUltimaNoticia(ultimaNoticiaLog,ultimaNoticia['titulo'])
-    
+
     if(flag):
         sendNoticia(ultimaNoticia)
