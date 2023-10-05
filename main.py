@@ -2,7 +2,7 @@
 import requests                 #pip install requests
 from bs4 import BeautifulSoup   #pip install bs4
 import os
-import PySimpleGUI as sg
+import datetime
 
 def getNoticiasLog():
     if (os.path.exists('noticias.log.txt')):
@@ -18,15 +18,15 @@ def getNoticiasLog():
         return ultimaLinha
 
 def getNoticia():
-    reponse = requests.get("https://g1.lobo.com/")
+    reponse = requests.get("https://g1.globo.com/")
 
     pagina = BeautifulSoup(reponse.text,'html.parser')
     tituloNoticia = pagina.find('div',attrs={'class':'feed-post-header with-post-chapeu'})
     subtituloNoticia = pagina.find('div',attrs={'class':'feed-post-body-title gui-color-primary gui-color-hover'})
     linkHTML = pagina.find('a',attrs={'class':'feed-post-link gui-color-primary gui-color-hover'})
     link = linkHTML['href']
-    
-    noticia = {'titulo':tituloNoticia.text, 'subTitulo': subtituloNoticia.text, 'link': link}
+    horario = datetime.datetime.now().strftime("%H:%M:%S")
+    noticia = {'titulo':tituloNoticia.text, 'subTitulo': subtituloNoticia.text, 'link': link, "Horario": horario}
 
     return noticia
 
@@ -37,8 +37,8 @@ def getUltimaNoticia(ultimaNoticiaLog, ultimaNoticia):
     else:
         return True
 def sendNoticia(noticia):
-    PHONE_NUMBER = "5517991777462"
-    API_KEY = "8983673"
+    PHONE_NUMBER = ""
+    API_KEY = ""
     if (noticia['subTitulo'] != ""):
         mensagem = f"*{noticia['titulo']}*\n_{noticia['subTitulo']}_\n\n{noticia['link']}"
     else:
