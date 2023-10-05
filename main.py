@@ -2,6 +2,7 @@
 import requests                 #pip install requests
 from bs4 import BeautifulSoup   #pip install bs4
 import os
+from datetime import datetime
 
 def getNoticiasLog():
     
@@ -24,8 +25,8 @@ def getNoticia():
     subtituloNoticia = pagina.find('div',attrs={'class':'feed-post-body-title gui-color-primary gui-color-hover'})
     linkHTML = pagina.find('a',attrs={'class':'feed-post-link gui-color-primary gui-color-hover'})
     link = linkHTML['href']
-    
-    noticia = {'titulo':tituloNoticia.text, 'subTitulo': subtituloNoticia.text, 'link': link}
+    horario = datetime.now().strftime("%H:%M:%S")
+    noticia = {'titulo':tituloNoticia.text, 'subTitulo': subtituloNoticia.text, 'link': link, "Horario": horario}
 
     return noticia
 
