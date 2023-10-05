@@ -2,9 +2,9 @@
 import requests                 #pip install requests
 from bs4 import BeautifulSoup   #pip install bs4
 import os
+import PySimpleGUI as sg
 
 def getNoticiasLog():
-    
     if (os.path.exists('noticias.log.txt')):
         pass
     else:
@@ -18,7 +18,8 @@ def getNoticiasLog():
         return ultimaLinha
 
 def getNoticia():
-    reponse = requests.get("https://g1.globo.com/")
+    reponse = requests.get("https://g1.lobo.com/")
+
     pagina = BeautifulSoup(reponse.text,'html.parser')
     tituloNoticia = pagina.find('div',attrs={'class':'feed-post-header with-post-chapeu'})
     subtituloNoticia = pagina.find('div',attrs={'class':'feed-post-body-title gui-color-primary gui-color-hover'})
@@ -29,16 +30,15 @@ def getNoticia():
 
     return noticia
 
+
 def getUltimaNoticia(ultimaNoticiaLog, ultimaNoticia):
     if (ultimaNoticiaLog == ultimaNoticia):
         return False
     else:
         return True
-    
 def sendNoticia(noticia):
-    PHONE_NUMBER = '' #Set your WhatsApp number <EX: 34123123123> / Coloque o seu número de WhatsApp aqui <EX: 5521999999999>
-    API_KEY = '' #Set your APIKEY of CallmeBot / Coloque o seu API Key do CallmeBot aqui
-    
+    PHONE_NUMBER = "5517991777462"
+    API_KEY = "8983673"
     if (noticia['subTitulo'] != ""):
         mensagem = f"*{noticia['titulo']}*\n_{noticia['subTitulo']}_\n\n{noticia['link']}"
     else:
