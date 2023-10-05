@@ -36,7 +36,7 @@ def getUltimaNoticia(ultimaNoticiaLog, ultimaNoticia):
         return True
     
 def sendNoticia(noticia):
-    PHONE_NUMBER = '' #Set your WhatsApp number / Coloque o seu número de WhatsApp aqui
+    PHONE_NUMBER = '' #Set your WhatsApp number <EX: 34123123123> / Coloque o seu número de WhatsApp aqui <EX: 5521999999999>
     API_KEY = '' #Set your APIKEY of CallmeBot / Coloque o seu API Key do CallmeBot aqui
     
     if (noticia['subTitulo'] != ""):
