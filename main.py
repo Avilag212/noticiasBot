@@ -3,7 +3,27 @@ import requests                 #pip install requests
 from bs4 import BeautifulSoup   #pip install bs4
 import os
 import datetime
+import PySimpleGUIQt as sg # pip install PySimpleGUIQt
 
+sg.theme("DarkGreen5")
+
+layout = [[sg.Text("Suas informações nunca serão reutilizadas com este script, elas não serão salvas en nenhum banco de dados ou afins.", font=("Helvetica", 12, "italic"))],
+    [sg.Text("Número do WhatsApp"),sg.InputText(key="phoneNumber")],
+    [sg.Text("Número da API"),sg.InputText(key="apiKey")],
+    [sg.Ok(), sg.Cancel()]
+]
+
+window = sg.Window("Bot WhatsApp News",layout)
+
+
+while True:
+    event, value = window.read()
+    if event in (sg.WIN_CLOSED, "Cancel"):
+        break
+    else:
+        PHONE_NUMBER = value["phoneNumber"]
+        API_KEY = value["apiKey"]
+        window.close()
 def getNoticiasLog():
     if (os.path.exists('noticias.log.txt')):
         pass
@@ -16,6 +36,8 @@ def getNoticiasLog():
         ultimaLinha = arquivo.readlines()[-1]
         arquivo.close()
         return ultimaLinha
+
+
 
 def getNoticia():
     reponse = requests.get("https://g1.globo.com/")
@@ -37,8 +59,6 @@ def getUltimaNoticia(ultimaNoticiaLog, ultimaNoticia):
     else:
         return True
 def sendNoticia(noticia):
-    PHONE_NUMBER = ""
-    API_KEY = ""
     if (noticia['subTitulo'] != ""):
         mensagem = f"*{noticia['titulo']}*\n_{noticia['subTitulo']}_\n\n{noticia['link']}"
     else:
